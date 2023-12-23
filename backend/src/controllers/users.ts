@@ -43,7 +43,7 @@ export const register: RequestHandler<
             maxAge: 24 * 60 * 60 * 1000,
         });
 
-        return res.sendStatus(200);
+        return res.status(200).json({ message: 'OK' });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Something went wrong' });
