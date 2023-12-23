@@ -11,6 +11,11 @@ export const registerBodyValidator = [
     ).isLength({ min: 8 }),
 ];
 
+export const LoginBodyValidator = [
+    check('email', 'Email is required').notEmpty().isEmail(),
+    check('password', 'Password is required').notEmpty(),
+];
+
 export const validate = (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

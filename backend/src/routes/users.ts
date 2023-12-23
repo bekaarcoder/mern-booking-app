@@ -1,9 +1,6 @@
-import express, { Request, Response } from 'express';
-import jwt from 'jsonwebtoken';
-import { check, validationResult } from 'express-validator';
-import User from '../models/User';
-import { registerBodyValidator, validate } from '../middlewares/validator';
+import express from 'express';
 import { register } from '../controllers/users';
+import { registerBodyValidator, validate } from '../middlewares/validator';
 
 const router = express.Router();
 
