@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import { RequestHandler } from 'express';
+import { Request, RequestHandler, Response } from 'express';
 import User from '../models/User';
 
 interface LoginBody {
@@ -45,4 +45,15 @@ export const login: RequestHandler<
         console.error(error);
         res.status(500).json({ message: 'Something went wrong' });
     }
+};
+
+export const validateUserToken = (req: Request, res: Response) => {
+    res.status(200).send({ userId: req.userId });
+};
+
+export const logout = (req: Request, res: Response) => {
+    res.cookie('auth_token', '', {
+        expires: new Date(0),
+    });
+    res.status(200).send({ message: 'OK' });
 };
