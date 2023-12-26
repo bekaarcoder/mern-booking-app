@@ -28,7 +28,9 @@ app.use('/api/auth', authRoutes);
 mongoose
     .connect(process.env.MONGODB_CONNECTION_STRING as string)
     .then(() => {
-        console.info('MongoDB connected.');
+        console.info(
+            `Connected to ${process.env.MONGODB_CONNECTION} MongoDB database.`
+        );
         app.listen(5000, () => {
             console.info(`Server is running on localhost:5000`);
         });
