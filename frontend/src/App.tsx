@@ -1,13 +1,7 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Layout from './layout/Layout';
-import Register from './pages/Register';
-import { Toaster } from 'react-hot-toast';
-import Login from './pages/Login';
-
 function App() {
     return (
         <>
-            <Toaster />
+            {/* <Toaster />
             <Router>
                 <Routes>
                     <Route
@@ -43,7 +37,7 @@ function App() {
                         }
                     />
                 </Routes>
-            </Router>
+            </Router> */}
         </>
     );
 }
