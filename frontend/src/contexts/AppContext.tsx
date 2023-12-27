@@ -11,6 +11,7 @@ type ToastMessage = {
 type AppContextType = {
     showToast: (toastMessage: ToastMessage) => void;
     isLoggedIn: boolean;
+    loading: boolean;
 };
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -20,9 +21,13 @@ type AppContextProviderType = {
 };
 
 export const AppContextProvider = ({ children }: AppContextProviderType) => {
-    const { isError } = useQuery('validateToken', APIClient.validateToken, {
-        retry: false,
-    });
+    const { isError, isLoading } = useQuery(
+        'validateToken',
+        APIClient.validateToken,
+        {
+            retry: false,
+        }
+    );
 
     const showToast = (toastMessage: ToastMessage) => {
         if (toastMessage.type === 'SUCCESS') {
@@ -33,7 +38,9 @@ export const AppContextProvider = ({ children }: AppContextProviderType) => {
     };
 
     return (
-        <AppContext.Provider value={{ showToast, isLoggedIn: !isError }}>
+        <AppContext.Provider
+            value={{ showToast, isLoggedIn: !isError, loading: isLoading }}
+        >
             {children}
         </AppContext.Provider>
     );

@@ -3,7 +3,7 @@ import { useAppContext } from '../hooks/useAppContext';
 import SignOutButton from './SignOutButton';
 
 const Header = () => {
-    const { isLoggedIn } = useAppContext();
+    const { isLoggedIn, loading } = useAppContext();
 
     return (
         <div className="bg-blue-800 py-4">
@@ -12,7 +12,7 @@ const Header = () => {
                     <Link to="/">MERNHolidays</Link>
                 </span>
                 <span className="flex space-x-2">
-                    {isLoggedIn ? (
+                    {!loading && isLoggedIn ? (
                         <>
                             <Link
                                 to="/my-bookings"
