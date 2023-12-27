@@ -37,6 +37,10 @@ app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/hotels', hotelRoutes);
 
+app.get('*', (req: Request, res: Response) => {
+    res.send(path.join(__dirname, '../../frontend/dist/index.html'));
+});
+
 mongoose
     .connect(process.env.MONGODB_CONNECTION_STRING as string)
     .then(() => {
