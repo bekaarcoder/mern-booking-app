@@ -1,6 +1,6 @@
 import express from 'express';
 import { upload } from '../middlewares/fileUpload';
-import { createHotel } from '../controllers/hotels';
+import { createHotel, getHotels } from '../controllers/hotels';
 import { verifyToken } from '../middlewares/auth';
 import { HotelBodyValidator } from '../middlewares/validator';
 
@@ -13,5 +13,7 @@ router.post(
     upload.array('imageFiles', 6),
     createHotel
 );
+
+router.get('/', verifyToken, getHotels);
 
 export default router;

@@ -5,6 +5,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import PrivateRoutes from './PrivateRoutes';
 import AddHotel from '../pages/AddHotel';
+import MyHotels from '../pages/MyHotels';
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
                 path: 'add-hotel',
                 element: <PrivateRoutes />,
                 children: [{ index: true, element: <AddHotel /> }],
+            },
+            {
+                path: 'my-hotels',
+                element: <PrivateRoutes />,
+                children: [{ index: true, element: <MyHotels /> }],
             },
         ],
     },
