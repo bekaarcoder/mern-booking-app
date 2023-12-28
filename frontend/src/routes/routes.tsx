@@ -6,6 +6,7 @@ import Register from '../pages/Register';
 import PrivateRoutes from './PrivateRoutes';
 import AddHotel from '../pages/AddHotel';
 import MyHotels from '../pages/MyHotels';
+import EditHotel from '../pages/EditHotel';
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
                 path: 'my-hotels',
                 element: <PrivateRoutes />,
                 children: [{ index: true, element: <MyHotels /> }],
+            },
+            {
+                path: 'edit-hotel',
+                element: <PrivateRoutes />,
+                children: [{ path: ':hotelId', element: <EditHotel /> }],
             },
         ],
     },

@@ -12,7 +12,10 @@ const FacilitiesSection = () => {
             <h2 className="text-2xl font-bold my-3">Facilities</h2>
             <div className="grid grid-cols-5 gap-3">
                 {hotelFacilities.map((val) => (
-                    <label className="text-sm flex gap-1 text-gray-700">
+                    <label
+                        className="text-sm flex gap-1 text-gray-700"
+                        key={val}
+                    >
                         <input
                             type="checkbox"
                             value={val}
