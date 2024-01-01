@@ -1,13 +1,12 @@
 import express from 'express';
-import { upload } from '../middlewares/fileUpload';
 import {
     createHotel,
     getHotel,
     getHotels,
-    searchHotel,
     updateHotel,
 } from '../controllers/hotels';
 import { verifyToken } from '../middlewares/auth';
+import { upload } from '../middlewares/fileUpload';
 import { HotelBodyValidator } from '../middlewares/validator';
 
 const router = express.Router();
@@ -25,7 +24,5 @@ router.get('/', verifyToken, getHotels);
 router.get('/:id', verifyToken, getHotel);
 
 router.put('/:id', verifyToken, upload.array('imageFiles'), updateHotel);
-
-router.get('/search', searchHotel);
 
 export default router;

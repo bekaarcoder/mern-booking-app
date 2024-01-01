@@ -1,4 +1,5 @@
 import { Hotel } from './models/Hotel';
+import { HotelSearchResponse } from './models/HotelSearchResponse';
 import { LoginFormData } from './pages/Login';
 import { RegisterFormData } from './pages/Register';
 
@@ -113,6 +114,37 @@ export const updateHotel = async (hotelFormData: FormData) => {
 
     if (!response.ok) {
         throw new Error('Failed to update hotel');
+    }
+
+    return response.json();
+};
+
+export type SearchParams = {
+    destination?: string;
+    checkIn?: string;
+    checkOut?: string;
+    adultCount?: string;
+    childCount?: string;
+    page?: string;
+};
+
+export const SearchHotels = async (
+    searchParams: SearchParams
+): Promise<HotelSearchResponse> => {
+    const queryParams = new URLSearchParams();
+    queryParams.append('destination', searchParams.destination || '');
+    queryParams.append('checkIn', searchParams.checkIn || '');
+    queryParams.append('checkOut', searchParams.checkOut || '');
+    queryParams.append('adultCount', searchParams.adultCount || '');
+    queryParams.append('childCount', searchParams.childCount || '');
+    queryParams.append('page', searchParams.page || '');
+
+    const response = await fetch(
+        `${API_BASE_URL}/api/hotels/search?${queryParams}`
+    );
+
+    if (!response.ok) {
+        throw new Error('Error searching hotels');
     }
 
     return response.json();
