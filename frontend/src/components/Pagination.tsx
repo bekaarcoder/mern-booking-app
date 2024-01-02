@@ -15,6 +15,7 @@ const Pagination = ({ page, pages, onPageChange }: Props) => {
                         className={`px-2 py-1 ${
                             page === number ? 'bg-gray-200' : ''
                         }`}
+                        key={number}
                     >
                         <button onClick={() => onPageChange(number)}>
                             {number}
