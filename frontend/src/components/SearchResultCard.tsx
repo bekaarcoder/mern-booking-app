@@ -31,7 +31,7 @@ const SearchResultCard = ({ hotel }: Props) => {
                         <span className="ml-1 text-sm">{hotel.type}</span>
                     </div>
                     <Link
-                        to={`/detail/${hotel._id}`}
+                        to={`/hotel/${hotel._id}`}
                         className="text-2xl font-bold cursor-pointer"
                     >
                         {hotel.name}
@@ -58,7 +58,7 @@ const SearchResultCard = ({ hotel }: Props) => {
                                 ${hotel.pricePerNight} per night
                             </span>
                             <Link
-                                to={`/detail/${hotel._id}`}
+                                to={`/hotel/${hotel._id}`}
                                 className="bg-blue-600 text-white h-full p-2 font-bold text-xl max-w-fit hover:bg-blue-500"
                             >
                                 View More

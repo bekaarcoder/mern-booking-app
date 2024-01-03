@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { body, check, validationResult } from 'express-validator';
+import { body, check, param, validationResult } from 'express-validator';
 
 export const registerBodyValidator = [
     check('firstName', 'First Name is required').notEmpty(),
@@ -30,6 +30,10 @@ export const HotelBodyValidator = [
         .notEmpty()
         .isArray()
         .withMessage('Facilities are required'),
+];
+
+export const HotelParamsValidator = [
+    param('id').notEmpty().withMessage('Hotel ID is required'),
 ];
 
 export const validate = (req: Request, res: Response, next: NextFunction) => {

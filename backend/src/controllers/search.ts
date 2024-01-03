@@ -1,6 +1,18 @@
 import { Request, Response } from 'express';
 import Hotel, { HotelType } from '../models/Hotel';
 
+export const getHotelDetails = async (req: Request, res: Response) => {
+    try {
+        const id = req.params.id.toString();
+
+        const hotel = await Hotel.findById(id);
+        res.status(200).json(hotel);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Something went wrong' });
+    }
+};
+
 export interface HotelSearchResponse {
     data: HotelType[];
     pagination: {

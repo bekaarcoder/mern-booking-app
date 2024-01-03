@@ -8,6 +8,7 @@ import AddHotel from '../pages/AddHotel';
 import MyHotels from '../pages/MyHotels';
 import EditHotel from '../pages/EditHotel';
 import Search from '../pages/Search';
+import HotelDetails from '../pages/HotelDetails';
 
 const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
             {
                 path: 'search',
                 element: <Search />,
+            },
+            {
+                path: 'hotel/:hotelId',
+                element: <HotelDetails />,
             },
             {
                 path: 'add-hotel',
